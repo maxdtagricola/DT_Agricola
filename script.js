@@ -1,14 +1,99 @@
+// 🔥 PROTEÇÃO GLOBAL (evita quebrar o site)
+window.addEventListener("error", function(e) {
+  console.log("Erro detectado:", e.message);
+});
+
+// 🔐 CONTROLE DE USUÁRIO
+let usuarioLogado = null;
+
 // 🔹 ABAS
 function mostrarAba(id) {
   document.querySelectorAll('.aba').forEach(sec => {
     sec.classList.remove('ativa');
   });
-  document.getElementById(id).classList.add('ativa');
+
+  const aba = document.getElementById(id);
+  if (aba) aba.classList.add('ativa');
 }
 
-// 🔹 ADICIONAR PRODUTO
-document.getElementById("formProduto").addEventListener("submit", async function(e) {
+// 🔐 ABRIR LOGIN
+function abrirLogin() {
+  document.getElementById("loginModal").style.display = "flex";
+}
+
+// 🔐 FECHAR LOGIN
+function fecharLogin() {
+  document.getElementById("loginModal").style.display = "none";
+}
+
+// 🔐 LOGIN
+function fazerLogin() {
+  const email = document.getElementById("emailLogin").value;
+  const senha = document.getElementById("senhaLogin").value;
+  const erro = document.getElementById("erroLogin");
+
+  firebase.auth().signInWithEmailAndPassword(email, senha)
+    .then(() => {
+      fecharLogin();
+      erro.innerText = "";
+    })
+    .catch(() => {
+      erro.innerText = "Email ou senha inválidos";
+    });
+}
+
+// 🔐 LOGOUT
+function logout() {
+  firebase.auth().signOut();
+}
+
+// 🔥 DETECTAR /admin NA URL
+function verificarRotaAdmin() {
+  if (window.location.pathname === "/admin") {
+    abrirLogin();
+  }
+}
+
+// 🔹 CARREGAR PRODUTOS
+function carregarProdutos() {
+  db.collection("produtos").onSnapshot(snapshot => {
+    const lista = document.getElementById("listaProdutos");
+    if (!lista) return;
+
+    lista.innerHTML = "";
+
+    snapshot.forEach(doc => {
+      const p = doc.data();
+
+      lista.innerHTML += `
+        <div class="produto">
+          <div class="marca">${p.marca || ""}</div>
+          <div class="nome">${p.nome || ""}</div>
+
+          <img src="${p.imagem || ""}">
+
+          <p>Código: ${p.referencia || ""}</p>
+          <p>R$ ${p.preco || ""}</p>
+          <p>Estoque: ${p.quantidade || 0}</p>
+
+          ${firebase.auth().currentUser ? `
+            <button onclick="editar('${doc.id}')">Editar</button>
+            <button onclick="deletar('${doc.id}')">Excluir</button>
+          ` : ""}
+        </div>
+      `;
+    });
+  });
+}
+
+// 🔹 ADICIONAR PRODUTO (PROTEGIDO)
+document.getElementById("formProduto")?.addEventListener("submit", async function(e) {
   e.preventDefault();
+
+  if (!firebase.auth().currentUser) {
+    alert("Você precisa estar logado!");
+    return;
+  }
 
   await db.collection("produtos").add({
     nome: nome.value,
@@ -23,42 +108,17 @@ document.getElementById("formProduto").addEventListener("submit", async function
   this.reset();
 });
 
-// 🔹 LISTAR PRODUTOS EM TEMPO REAL
-db.collection("produtos").onSnapshot(snapshot => {
-  renderizar(snapshot);
-});
-
-function renderizar(snapshot) {
-  const lista = document.getElementById("listaProdutos");
-  lista.innerHTML = "";
-
-  snapshot.forEach(doc => {
-    const p = doc.data();
-
-    lista.innerHTML += `
-      <div class="produto">
-        <div class="marca">${p.marca}</div>
-        <div class="nome">${p.nome}</div>
-
-        <img src="${p.imagem}">
-
-        <p>Código: ${p.referencia}</p>
-        <p>R$ ${p.preco}</p>
-        <p>Estoque: ${p.quantidade}</p>
-
-        <button onclick="editar('${doc.id}')">Editar</button>
-        <button onclick="deletar('${doc.id}')">Excluir</button>
-      </div>
-    `;
-  });
-}
-
-// 🔹 EDITAR
+// 🔹 EDITAR PRODUTO (PROTEGIDO)
 async function editar(id) {
+  if (!firebase.auth().currentUser) {
+    alert("Apenas admin pode editar!");
+    return;
+  }
+
   const novoPreco = prompt("Novo preço:");
   const novaQtd = prompt("Quantidade:");
 
-  if (novoPreco === null || novaQtd === null) return;
+  if (!novoPreco || !novaQtd) return;
 
   await db.collection("produtos").doc(id).update({
     preco: novoPreco,
@@ -66,8 +126,13 @@ async function editar(id) {
   });
 }
 
-// 🔹 EXCLUIR
+// 🔹 DELETAR PRODUTO (PROTEGIDO)
 async function deletar(id) {
+  if (!firebase.auth().currentUser) {
+    alert("Apenas admin pode excluir!");
+    return;
+  }
+
   if (confirm("Excluir produto?")) {
     await db.collection("produtos").doc(id).delete();
   }
@@ -75,18 +140,20 @@ async function deletar(id) {
 
 // 🔍 BUSCA
 function buscarProduto() {
-  const termo = document.getElementById("busca").value.toLowerCase();
+  const termo = document.getElementById("busca")?.value.toLowerCase();
 
   db.collection("produtos").get().then(snapshot => {
     const lista = document.getElementById("listaProdutos");
+    if (!lista) return;
+
     lista.innerHTML = "";
 
     snapshot.forEach(doc => {
       const p = doc.data();
 
       if (
-        p.nome.toLowerCase().includes(termo) ||
-        p.marca.toLowerCase().includes(termo)
+        p.nome?.toLowerCase().includes(termo) ||
+        p.marca?.toLowerCase().includes(termo)
       ) {
         lista.innerHTML += `
           <div class="produto">
@@ -98,3 +165,22 @@ function buscarProduto() {
     });
   });
 }
+
+// 🔐 INICIALIZAÇÃO SEGURA
+window.onload = function () {
+
+  if (typeof firebase === "undefined") {
+    console.log("Firebase não carregou!");
+    return;
+  }
+
+  firebase.auth().onAuthStateChanged(user => {
+    usuarioLogado = user;
+
+    console.log("Usuário:", user);
+
+    carregarProdutos();
+  });
+
+  verificarRotaAdmin();
+};
