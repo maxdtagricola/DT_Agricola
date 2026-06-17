@@ -49,7 +49,7 @@ function logout() {
 
 // 🔥 DETECTAR /admin NA URL
 function verificarRotaAdmin() {
-  if (window.location.pathname === "/admin") {
+  if (window.location.search.includes("admin")) {
     abrirLogin();
   }
 }
