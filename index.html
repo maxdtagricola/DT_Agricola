@@ -1,27 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <title>Daniel Tratores</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+<!-- 🔐 LOGIN MODAL -->
+<div id="loginModal" class="login-modal">
+  <div class="login-box">
+    <h2>🔐 Acesso Administrativo</h2>
+
+    <input type="email" id="emailLogin" placeholder="Seu email">
+    <input type="password" id="senhaLogin" placeholder="Sua senha">
+
+    <button onclick="fazerLogin()">Entrar</button>
+
+    <p id="erroLogin"></p>
+  </div>
+</div>
+
 <header>
-  <img src="dt.png" class="banner-img">
+  <img src="dt1.png" class="banner-img">
   <h1>Bem Vindo</h1>
 </header>
 
 <nav>
   <button onclick="mostrarAba('home')">Home</button>
   <button onclick="mostrarAba('produtos')">Produtos</button>
-  <button onclick="mostrarAba('contato')">Contato</button>
-  <button onclick="mostrarAba('pos vendas')">Pós vendas</button>
+  <button onclick="mostrarAba('contatos')">Contatos</button>
+  <button onclick="mostrarAba('posvendas')">Pós vendas</button>
+  <button onclick="mostrarAba('implementos')">Implementos</button>
 </nav>
 
-<section id="home" class="aba ativa">
-  <h2></h2>
-</section>
+<section id="home" class="aba ativa"></section>
 
 <section id="produtos" class="aba">
   <h2>Produtos</h2>
@@ -42,28 +57,33 @@
   </form>
 </section>
 
-<section id="contato" class="aba">
-  <h2>Contato</h2>
+<section id="contatos" class="aba">
+  <h2>Contatos</h2>
   <p>WhatsApp: (69) 99603-1753</p>
 </section>
 
-<section id="pos vendas" class="aba">
-  <h2></h2>
+<section id="posvendas" class="aba">
+  <h2>Pós Vendas</h2>
+</section>
+
+<section id="implementos" class="aba">
+  <h2>Implementos</h2>
 </section>
 
 <!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 
 <script>
 const firebaseConfig = {
-      apiKey: "AIzaSyC23KJZEqvrsvhZBiMmIPPDj3lmi1bcW3E",
-      authDomain: "daniel-tratores.firebaseapp.com",
-      projectId: "daniel-tratores",
-      storageBucket: "daniel-tratores.firebasestorage.app",
-      messagingSenderId: "827204727665",
-      appId: "1:827204727665:web:4e95eb451cbb66fd243cd0",
-      measurementId: "G-WTB51BEN3T"
+  apiKey: "AIzaSyC23KJZEqvrsvhZBiMmIPPDj3lmi1bcW3E",
+  authDomain: "daniel-tratores.firebaseapp.com",
+  projectId: "daniel-tratores",
+  storageBucket: "daniel-tratores.firebasestorage.app",
+  messagingSenderId: "827204727665",
+  appId: "1:827204727665:web:4e95eb451cbb66fd243cd0",
+  measurementId: "G-WTB51BEN3T"
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -71,5 +91,6 @@ const db = firebase.firestore();
 </script>
 
 <script src="script.js"></script>
+
 </body>
 </html>
