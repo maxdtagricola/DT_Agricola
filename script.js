@@ -49,7 +49,7 @@ function logout() {
 
 // 🔥 DETECTAR /admin NA URL
 function verificarRotaAdmin() {
-  if (window.location.search.includes("admin")) {
+  if (window.location.pathname === "/admin") {
     abrirLogin();
   }
 }
@@ -67,13 +67,12 @@ function carregarProdutos() {
 
       lista.innerHTML += `
         <div class="produto">
-          <div class="marca">${p.marca || ""}</div>
           <div class="nome">${p.nome || ""}</div>
 
           <img src="${p.imagem || ""}">
 
-          <p>Código: ${p.referencia || ""}</p>
-          <p>R$ ${p.preco || ""}</p>
+          <p>Referência: ${p.referencia || ""}</p>
+          <p>Marca: ${p.marca || ""}</p>
           <p>Estoque: ${p.quantidade || 0}</p>
 
           ${firebase.auth().currentUser ? `
