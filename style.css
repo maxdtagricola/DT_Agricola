@@ -1,0 +1,140 @@
+body {
+    font-family: Arial;
+    margin: 0;
+
+    background: url('../img/img.jpg') no-repeat center center fixed;
+    background-size: cover;
+
+    color: white;
+}
+
+.banner-img {
+    width: 80%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+}
+section{
+    text-align: center;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background: white;
+}
+
+header,
+nav,
+.aba {
+    background: rgba(0, 0, 0, 0.6);
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.logo {
+    width: 150px;
+}
+
+nav {
+    background: #c40000;
+    display: flex;
+    justify-content: center;
+}
+
+nav button {
+    text-align: center;
+    background: none;
+    border: none;
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background: #900000;
+}
+
+.aba {
+    display: none;
+    padding: 20px;
+}
+
+.ativa {
+    display: block;
+}
+
+#busca {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.grid-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.produto {
+    background: red;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.produto:hover {
+    transform: scale(1.03);
+}
+
+.produto img {
+    box-shadow: 20px;
+    border-style: outset;
+    border-radius: 15px;
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+}
+
+.marca {
+    font-size: 12px;
+    color: gray;
+}
+
+.nome {
+    font-weight: bold;
+    color: black;
+}
+
+.produto button {
+    margin-top: 5px;
+    width: 100%;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.produto button:nth-child(1) {
+    background: orange;
+    color: white;
+}
+
+.produto button:nth-child(2) {
+    background: red;
+    color: white;
+}
