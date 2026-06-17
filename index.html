@@ -29,15 +29,16 @@
 </header>
 
 <nav>
-  <button onclick="mostrarAba('home')">Home</button>
-  <button onclick="mostrarAba('produtos')">Produtos</button>
-  <button onclick="mostrarAba('contatos')">Contatos</button>
-  <button onclick="mostrarAba('posvendas')">Pós vendas</button>
-  <button onclick="mostrarAba('implementos')">Implementos</button>
+  <button onclick="mostrarAba('home')">HOME</button>
+  <button onclick="mostrarAba('produtos')">PRODUTOS</button>
+  <button onclick="mostrarAba('contatos')">CONTATOS</button>
+  <button onclick="mostrarAba('posvendas')">PÓS VENDAS</button>
+  <button onclick="mostrarAba('implementos')">IMPLEMENTOS</button>
 </nav>
 
-<section id="home" class="aba ativa"></section>
-
+<section id="home" class="aba ativa">
+  <h2>Bem-vindo à Daniel Tratores</h2>
+</section>
 <section id="produtos" class="aba">
   <h2>Produtos</h2>
 
@@ -50,7 +51,6 @@
     <input id="nome" placeholder="Nome" required>
     <input id="marca" placeholder="Marca">
     <input id="referencia" placeholder="Referência">
-    <input id="preco" placeholder="Preço">
     <input id="disponibilidade" placeholder="Disponibilidade">
     <input id="imagem" placeholder="URL da imagem">
     <button type="submit">Adicionar</button>
