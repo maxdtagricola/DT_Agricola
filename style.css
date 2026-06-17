@@ -8,133 +8,206 @@ body {
     color: white;
 }
 
-.banner-img {
-    width: 80%;
-    height: auto;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 10px;
-}
-section{
-    text-align: center;
-}
-
+/* 🔥 OVERLAY ESCURO */
 body::before {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+    pointer-events: none; /* 🔥 evita bloquear cliques */
+}
+
+/* 🔐 LOGIN */
+.login-modal {
+    position: fixed;
     width: 100%;
     height: 100%;
-
-    background: rgba(0, 0, 0, 0.5);
-    z-index: -1;
-}
-
-header {
-    text-align: center;
-    padding: 20px;
-    background: white;
-}
-
-header,
-nav,
-.aba {
-    background: rgba(0, 0, 0, 0.6);
-    margin: 10px;
-    border-radius: 10px;
-}
-
-.logo {
-    width: 150px;
-}
-
-nav {
-    background: #c40000;
-    display: flex;
+    background: rgba(0,0,0,0.7);
+    z-index: 9999;
+    display: none;
+    align-items: center;
     justify-content: center;
 }
 
-nav button {
+.login-box {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 300px;
     text-align: center;
+    color: black;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    background: #0b6b3a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#erroLogin {
+    color: red;
+}
+
+/* 🧱 HEADER */
+header {
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.6);
+}
+
+.banner-img {
+    width: 90%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* 🧭 MENU */
+nav {
+    display: flex;
+    justify-content: center;
+    background: #c40000;
+    margin: 10px;
+    border-radius: 10px;
+    gap: 10px; /* 🔥 espaço entre botões */
+}
+
+nav button {
     background: none;
     border: none;
     color: white;
-    padding: 15px;
+    padding: 15px 20px;
     cursor: pointer;
+    font-weight: bold;
 }
 
 nav button:hover {
     background: #900000;
 }
 
+/* 📦 SEÇÕES */
 .aba {
     display: none;
     padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.6);
 }
 
 .ativa {
     display: block;
 }
 
-#busca {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+section {
+    text-align: center;
 }
 
+/* 🔍 BUSCA */
+#busca {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: none;
+}
+
+/* 🛒 PRODUTOS GRID */
 .grid-produtos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
+    gap: 20px;
 }
 
+/* 📦 CARD PRODUTO */
 .produto {
-    background: red;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 15px;
     text-align: center;
     transition: 0.3s;
 }
 
 .produto:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
 
+/* 🖼️ IMAGEM */
 .produto img {
-    box-shadow: 20px;
-    border-style: outset;
-    border-radius: 15px;
     width: 100%;
-    height: 150px;
+    height: 160px;
+    max-height: 160px;
     object-fit: contain;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.1);
+    padding: 5px;
 }
 
+/* 🏷️ TEXTOS */
 .marca {
     font-size: 12px;
-    color: gray;
+    color: #ccc;
 }
 
 .nome {
     font-weight: bold;
-    color: black;
+    color: #00ff88;
+    margin: 5px 0;
 }
 
+/* 🔘 BOTÕES */
 .produto button {
     margin-top: 5px;
     width: 100%;
     border: none;
-    padding: 8px;
-    border-radius: 5px;
+    padding: 10px;
+    border-radius: 8px;
     cursor: pointer;
+    font-weight: bold;
 }
 
-.produto button:nth-child(1) {
+.produto button:first-of-type {
     background: orange;
     color: white;
 }
 
-.produto button:nth-child(2) {
+.produto button:last-of-type {
     background: red;
     color: white;
+}
+
+/* 🧾 FORM */
+form input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 8px;
+    border: none;
+}
+
+form button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: #0b6b3a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
 }
