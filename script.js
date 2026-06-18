@@ -177,7 +177,7 @@ function montarProdutoHTML(p, id) {
 
       <img src="${p.imagem || ""}">
 
-      <p>Código: ${p.referencia || ""}</p>
+      <p>REFERÊNCIA: ${p.referencia || ""}</p>
       <p>Marca: ${p.marca || ""}</p>
       <p>Estoque: ${p.quantidade || 0}</p>
 
