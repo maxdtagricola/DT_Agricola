@@ -1,5 +1,5 @@
 // 🔥 PROTEÇÃO GLOBAL (evita quebrar o site)
-window.addEventListener("error", function(e) {
+window.addEventListener("error", function (e) {
   console.log("Erro detectado:", e.message);
 });
 
@@ -65,28 +65,13 @@ function carregarProdutos() {
     snapshot.forEach(doc => {
       const p = doc.data();
 
-      lista.innerHTML += `
-        <div class="produto">
-          <div class="nome">${p.nome || ""}</div>
-
-          <img src="${p.imagem || ""}">
-
-          <p>Referência: ${p.referencia || ""}</p>
-          <p>Marca: ${p.marca || ""}</p>
-          <p>Estoque: ${p.quantidade || 0}</p>
-
-          ${firebase.auth().currentUser ? `
-            <button onclick="editar('${doc.id}')">Editar</button>
-            <button onclick="deletar('${doc.id}')">Excluir</button>
-          ` : ""}
-        </div>
-      `;
+      // 🔥 USAR A MESMA FUNÇÃO
+      lista.innerHTML += montarProdutoHTML(p, doc.id);
     });
   });
 }
-
 // 🔹 ADICIONAR PRODUTO (PROTEGIDO)
-document.getElementById("formProduto")?.addEventListener("submit", async function(e) {
+document.getElementById("formProduto")?.addEventListener("submit", async function (e) {
   e.preventDefault();
 
   if (!firebase.auth().currentUser) {
@@ -152,14 +137,10 @@ function buscarProduto() {
 
       if (
         p.nome?.toLowerCase().includes(termo) ||
-        p.marca?.toLowerCase().includes(termo)
+        p.marca?.toLowerCase().includes(termo) ||
+        p.referencia?.toLowerCase().includes(termo)
       ) {
-        lista.innerHTML += `
-          <div class="produto">
-            <div class="nome">${p.nome}</div>
-            <img src="${p.imagem}">
-          </div>
-        `;
+        lista.innerHTML += montarProdutoHTML(p, doc.id);
       }
     });
   });
@@ -183,3 +164,32 @@ window.onload = function () {
 
   verificarRotaAdmin();
 };
+function montarProdutoHTML(p, id) {
+  const numero = "5569996031753"; // 🔥 seu WhatsApp (com DDI + DDD)
+
+  const mensagem = encodeURIComponent(
+    `Olá, gostaria de cotar este produto:\n\n${p.nome}\nMarca: ${p.marca}\nCódigo: ${p.referencia}`
+  );
+
+  return `
+    <div class="produto">
+      <div class="nome">${p.nome || ""}</div>
+
+      <img src="${p.imagem || ""}">
+
+      <p>Código: ${p.referencia || ""}</p>
+      <p>Marca: ${p.marca || ""}</p>
+      <p>Estoque: ${p.quantidade || 0}</p>
+
+      <!-- 🔥 BOTÃO WHATSAPP -->
+      <a href="https://wa.me/${numero}?text=${mensagem}" target="_blank" class="btn-whatsapp">
+        💬 Cotar no WhatsApp
+      </a>
+
+      ${firebase.auth().currentUser ? `
+        <button onclick="editar('${id}')">Editar</button>
+        <button onclick="deletar('${id}')">Excluir</button>
+      ` : ""}
+    </div>
+  `;
+}
