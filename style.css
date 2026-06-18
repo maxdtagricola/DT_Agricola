@@ -212,3 +212,17 @@ form button {
     border-radius: 8px;
     cursor: pointer;
 }
+.btn-whatsapp {
+  display: block;
+  margin-top: 10px;
+  padding: 10px;
+  background: #25D366;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.btn-whatsapp:hover {
+  background: #1ebe5d;
+}
