@@ -37,9 +37,13 @@ function fazerLogin() {
       fecharLogin();
       erro.innerText = "";
     })
-    .catch(() => {
-      erro.innerText = "Email ou senha inválidos";
-    });
+.catch((error)=>{
+
+    console.log(error);
+
+    erro.innerText=error.message;
+
+});
 }
 
 // 🔐 LOGOUT
@@ -56,6 +60,7 @@ function verificarRotaAdmin() {
     abrirLogin();
   }
 }
+
 // 🔹 CARREGAR PRODUTOS
 function carregarProdutos() {
   db.collection("produtos").onSnapshot(snapshot => {
@@ -156,21 +161,32 @@ window.onload = function () {
     return;
   }
 
-  firebase.auth().onAuthStateChanged(user => {
-    usuarioLogado = user;
+firebase.auth().onAuthStateChanged(user=>{
 
-    console.log("Usuário:", user);
+    usuarioLogado=user;
 
     carregarProdutos();
-  });
 
+    const painel=document.getElementById("painelAdmin");
+
+    if(user){
+
+        painel.style.display="block";
+
+    }else{
+
+        painel.style.display="none";
+
+    }
+
+});
   verificarRotaAdmin();
 };
 function montarProdutoHTML(p, id) {
   const numero = "5569996031753"; // 🔥 seu WhatsApp (com DDI + DDD)
 
   const mensagem = encodeURIComponent(
-    `Olá, gostaria de cotar este produto:\n\n${p.nome}\nMarca: ${p.marca}\nCódigo: ${p.referencia}`
+    `Olá, gostaria de cotar este produto:\n\n${p.nome}\nMarca: ${p.marca}\nReferência: ${p.referencia}`
   );
 
   return `
@@ -195,3 +211,33 @@ function montarProdutoHTML(p, id) {
     </div>
   `;
 }
+document.querySelectorAll(".card-3d").forEach(card => {
+  const inner = card.querySelector(".card-inner");
+  const glow = card.querySelector(".glow");
+
+  card.addEventListener("mousemove", e => {
+    const rect = card.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = -(y - centerY) / 12;
+    const rotateY = (x - centerX) / 12;
+
+    inner.style.transform =
+      `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+
+    // brilho acompanha mouse
+    glow.style.left = x + "px";
+    glow.style.top = y + "px";
+    glow.style.opacity = "1";
+  });
+
+  card.addEventListener("mouseleave", () => {
+    inner.style.transform = "rotateX(0) rotateY(0) scale(1)";
+    glow.style.opacity = "0";
+  });
+});
