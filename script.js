@@ -49,11 +49,13 @@ function logout() {
 
 // 🔥 DETECTAR /admin NA URL
 function verificarRotaAdmin() {
-  if (window.location.pathname === "/admin") {
+  if (
+    window.location.search.includes("admin") ||
+    window.location.hash === "#admin"
+  ) {
     abrirLogin();
   }
 }
-
 // 🔹 CARREGAR PRODUTOS
 function carregarProdutos() {
   db.collection("produtos").onSnapshot(snapshot => {
