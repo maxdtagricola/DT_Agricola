@@ -1,96 +1,274 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Daniel Tratores</title>
-  <link rel="stylesheet" href="style.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Daniel Tratores Agrícola</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logoat.svg">
+
+
 </head>
 
 <body>
 
-<!-- 🔐 LOGIN MODAL -->
-<div id="loginModal" class="login-modal">
-  <div class="login-box">
-    <h2>🔐 Acesso Administrativo</h2>
+    <!-- LOGIN -->
 
-    <input type="email" id="emailLogin" placeholder="Seu email">
-    <input type="password" id="senhaLogin" placeholder="Sua senha">
+    <div id="loginModal" class="login-modal">
 
-    <button onclick="fazerLogin()">Entrar</button>
+        <div class="login-box">
 
-    <p id="erroLogin"></p>
-  </div>
-</div>
+            <h2>Área Administrativa</h2>
 
-<header>
-  <img src="dt.png" class="banner-img">
-  <h1>Bem Vindo</h1>
-</header>
+            <input type="email" id="emailLogin" placeholder="E-mail">
 
-<nav>
-  <button onclick="mostrarAba('home')">HOME</button>
-  <button onclick="mostrarAba('produtos')">PRODUTOS</button>
-  <button onclick="mostrarAba('contatos')">CONTATOS</button>
-  <button onclick="mostrarAba('posvendas')">PÓS VENDAS</button>
-  <button onclick="mostrarAba('implementos')">IMPLEMENTOS</button>
-</nav>
+            <input type="password" id="senhaLogin" placeholder="Senha">
 
-<section id="home" class="aba ativa">
-  <h2>Bem-vindo à Daniel Tratores</h2>
-</section>
-<section id="produtos" class="aba">
-  <h2>Produtos</h2>
+            <button onclick="fazerLogin()">
+                Entrar
+            </button>
 
-  <input type="text" id="busca" placeholder="Buscar..." onkeyup="buscarProduto()">
+            <p id="erroLogin"></p>
 
-  <div id="listaProdutos" class="grid-produtos"></div>
+        </div>
 
-  <h3>Adicionar Produto</h3>
-  <form id="formProduto">
-    <input id="nome" placeholder="Nome" required>
-    <input id="marca" placeholder="Marca">
-    <input id="referencia" placeholder="Referência">
-    <input id="disponibilidade" placeholder="Disponibilidade">
-    <input id="imagem" placeholder="URL da imagem">
-    <button type="submit">Adicionar</button>
-  </form>
-</section>
+    </div>
 
-<section id="contatos" class="aba">
-  <h2>Contatos</h2>
-  <p>WhatsApp: (69) 99603-1753</p>
-</section>
+    <!-- HEADER -->
 
-<section id="posvendas" class="aba">
-  <h2>Pós Vendas</h2>
-</section>
+    <header class="hero">
 
-<section id="implementos" class="aba">
-  <h2>Implementos</h2>
-</section>
+        <img src="dt.png" class="banner-img">
 
-<!-- FIREBASE -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+        <div class="hero-text">
 
-<script>
-const firebaseConfig = {
-  apiKey: "AIzaSyC23KJZEqvrsvhZBiMmIPPDj3lmi1bcW3E",
-  authDomain: "daniel-tratores.firebaseapp.com",
-  projectId: "daniel-tratores",
-  storageBucket: "daniel-tratores.firebasestorage.app",
-  messagingSenderId: "827204727665",
-  appId: "1:827204727665:web:4e95eb451cbb66fd243cd0",
-  measurementId: "G-WTB51BEN3T"
-};
+            <h1>Peças Agrícolas</h1>
 
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-</script>
+            <p>
+                Qualidade, confiança e atendimento especializado.
+            </p>
 
-<script src="script.js"></script>
+        </div>
+
+    </header>
+
+    <!-- MENU -->
+
+    <nav>
+
+        <button onclick="mostrarAba('home')">
+            HOME
+        </button>
+
+        <button onclick="mostrarAba('produtos')">
+            PRODUTOS
+        </button>
+
+        <button onclick="mostrarAba('implementos')">
+            IMPLEMENTOS
+        </button>
+
+        <button onclick="mostrarAba('posvendas')">
+            PÓS-VENDAS
+        </button>
+
+        <button onclick="mostrarAba('contatos')">
+            CONTATOS
+        </button>
+
+    </nav>
+
+    <!-- HOME -->
+
+    <section id="home" class="aba ativa">
+
+        <div class="home-box">
+
+            <h2>
+                Bem-vindo à Daniel Tratores Agrícola
+            </h2>
+
+            <p>
+
+                Trabalhamos com peças agrícolas originais,
+                implementos KUHN,
+                pós-venda especializado
+                e atendimento personalizado.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- PRODUTOS -->
+
+    <section id="produtos" class="aba">
+
+        <h2>Catálogo de Peças</h2>
+
+        <div class="busca-box">
+
+            <input type="text" id="busca" placeholder="Buscar por nome ou referência..." onkeyup="buscarProduto()">
+
+        </div>
+
+        <div id="listaProdutos" class="grid-produtos">
+
+        </div>
+
+        <!-- PAINEL ADMIN -->
+
+        <div id="painelAdmin" style="display:none;">
+
+            <h3>
+                Adicionar Produto
+            </h3>
+
+            <form id="formProduto">
+
+                <input id="nome" placeholder="Nome" required>
+
+                <input id="marca" placeholder="Marca">
+
+                <input id="referencia" placeholder="Referência">
+
+                <input id="medidas" placeholder="Medidas">
+
+                <input id="valor" placeholder="Valor">
+
+                <input id="disponibilidade" placeholder="Disponibilidade">
+
+                <input id="imagem" placeholder="URL da imagem">
+
+                <button type="submit">
+
+                    Salvar Produto
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- IMPLEMENTOS -->
+
+    <section id="implementos" class="aba">
+
+        <h2>
+            Implementos Agrícolas
+        </h2>
+
+        <div class="implementos-grid" id="listaImplementos">
+
+            <!--
+            Os cards 3D serão carregados aqui
+            -->
+
+        </div>
+
+    </section>
+
+    <!-- PÓS VENDAS -->
+
+    <section id="posvendas" class="aba">
+
+        <h2>
+
+            Pós-Vendas
+
+        </h2>
+
+        <p>
+
+            Nossa equipe está preparada para fornecer
+            suporte técnico,
+            peças originais,
+            garantia
+            e atendimento especializado.
+
+        </p>
+
+    </section>
+
+    <!-- CONTATOS -->
+
+    <section id="contatos" class="aba">
+
+        <h2>
+
+            Contatos
+
+        </h2>
+
+        <p>
+
+            📞 WhatsApp
+
+            <a href="https://wa.me/5569996031753" target="_blank">
+
+                (69) 99603-1753
+
+            </a>
+
+        </p>
+
+        <p>
+
+            📧 contato@danieltratores.com.br
+
+        </p>
+
+    </section>
+
+    <!-- RODAPÉ -->
+
+    <footer>
+
+        © 2026 Daniel Tratores Agrícola
+
+    </footer>
+
+    <!-- FIREBASE -->
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+    <script>
+
+        const firebaseConfig = {
+
+            apiKey: "SUA_API_KEY",
+
+            authDomain: "daniel-tratores.firebaseapp.com",
+
+            projectId: "daniel-tratores",
+
+            storageBucket: "daniel-tratores.firebasestorage.app",
+
+            messagingSenderId: "827204727665",
+
+            appId: "1:827204727665:web:4e95eb451cbb66fd243cd0"
+
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        const db = firebase.firestore();
+
+    </script>
+
+    <script src="script.js"></script>
 
 </body>
+
 </html>
