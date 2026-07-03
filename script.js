@@ -237,7 +237,7 @@ function criarCardProduto(produto) {
 
     const estoque = document.createElement("p");
 
-    estoque.innerHTML = `<strong>ESTOQUE:</strong> ${produto.disponibilidade}`;
+    estoque.innerHTML = `<strong>DISPONIBILIDADE:</strong> ${produto.disponibilidade}`;
 
     const botao = document.createElement("button");
 
