@@ -1,228 +1,1407 @@
-body {
-    font-family: Arial;
+/*=================================================
+    DANIEL TRATORES AGRÍCOLA
+==================================================*/
+
+* {
     margin: 0;
-
-    background: url('img.jpg') no-repeat center center fixed;
-    background-size: cover;
-
-    color: white;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* 🔥 OVERLAY ESCURO */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: url("img.jpg") center center/cover fixed no-repeat;
+    color: #fff;
+    border-radius: 15px;
+}
+
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, .60);
     z-index: -1;
-    pointer-events: none; /* 🔥 evita bloquear cliques */
+    pointer-events: none;
 }
 
-/* 🔐 LOGIN */
-.login-modal {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.7);
-    z-index: 9999;
-    display: none;
-    align-items: center;
-    justify-content: center;
+/*==========================
+SCROLLBAR
+===========================*/
+
+::-webkit-scrollbar {
+    width: 10px;
 }
 
-.login-box {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    width: 300px;
-    text-align: center;
-    color: black;
+::-webkit-scrollbar-track {
+    background: #e8e8e8;
 }
 
-.login-box input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+::-webkit-scrollbar-thumb {
+    background: #312f2f;
+    border-radius: 20px;
 }
 
-.login-box button {
-    width: 100%;
-    padding: 10px;
-    background: #0b6b3a;
-    color: white;
+::-webkit-scrollbar-thumb:hover {
+    background: #d41e1e;
+}
+
+/*==========================
+CONTAINER
+===========================*/
+
+.container {
+    width: min(92%, 1400px);
+    margin: auto;
+}
+
+/*==========================
+LINKS
+===========================*/
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
     border: none;
-    border-radius: 8px;
     cursor: pointer;
+    transition: .3s;
 }
 
-#erroLogin {
-    color: red;
+/*==========================
+TOPBAR
+===========================*/
+
+.topbar {
+    width: 100%;
+    background: rgba(212, 30, 30, .95);
+    color: #fff;
+    font-size: .9rem;
 }
 
-/* 🧱 HEADER */
-header {
-    text-align: center;
-    padding: 20px;
-    margin: 10px;
-    border-radius: 10px;
-    background: rgba(0,0,0,0.6);
+.topbar-container {
+    width: min(95%, 1400px);
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
-.banner-img {
-    width: 60%;
-    max-height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-}
+/*==========================
+HERO
+===========================*/
 
-/* 🧭 MENU */
-nav {
+.hero {
+    position: relative;
+    min-height: 90vh;
     display: flex;
     justify-content: center;
-    background: #c40000;
-    margin: 10px;
-    border-radius: 10px;
-    gap: 10px; /* 🔥 espaço entre botões */
+    align-items: center;
+    text-align: center;
+    background: url("img.jpg") center center/cover no-repeat;
 }
 
-nav button {
-    background: none;
-    border: none;
-    color: white;
-    padding: 15px 20px;
-    cursor: pointer;
-    font-weight: bold;
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .55);
 }
 
-nav button:hover {
-    background: #900000;
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 20px;
+    color: #fff;
 }
 
-/* 📦 SEÇÕES */
+.logo-principal {
+    width: 180px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin-bottom: 35px;
+}
+
+/*==========================
+BOTÕES
+===========================*/
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-verde {
+    background: rgba(212, 30, 30, .95);
+    color: #fff;
+    padding: 16px 35px;
+    border-radius: 40px;
+    transition: .35s;
+}
+
+.btn-verde:hover {
+    transform: translateY(-4px);
+    background: #b71c1c;
+}
+
+.btn-transparente {
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 16px 35px;
+    border-radius: 40px;
+    transition: .35s;
+}
+
+.btn-transparente:hover {
+    background: #fff;
+    color: #d41e1e;
+}
+
+/*=================================================
+MENU
+=================================================*/
+
+.menu {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 18px;
+    background: rgba(212, 30, 30, .95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 18px rgba(0, 0, 0, .15);
+}
+
+.menu button {
+    background: transparent;
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 30px;
+    border: 2px solid transparent;
+    font-size: .95rem;
+    font-weight: 600;
+    letter-spacing: .5px;
+}
+
+.menu button:hover {
+    background: #fff;
+    color: #d41e1e;
+    transform: translateY(-3px);
+}
+
+.menu button.ativo {
+    background: #b71c1c;
+    border-color: #fff;
+}
+
+/*=================================================
+ABAS
+=================================================*/
+
 .aba {
     display: none;
-    padding: 20px;
-    margin: 10px;
-    border-radius: 10px;
-    background: rgba(0,0,0,0.6);
+    padding: 15px 0;
+    animation: fade .4s ease;
 }
 
-.ativa {
+.aba.ativa {
     display: block;
 }
 
-section {
+@keyframes fade {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/*=================================================
+TÍTULOS
+=================================================*/
+
+.titulo-secao {
     text-align: center;
+    margin-bottom: 50px;
 }
 
-/* 🔍 BUSCA */
-#busca {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: none;
+.titulo-secao h2 {
+    font-size: 2.6rem;
+    color: #d41e1e;
+    margin-bottom: 15px;
 }
 
-/* 🛒 PRODUTOS GRID */
-.grid-produtos {
+.titulo-secao p {
+    max-width: 760px;
+    margin: auto;
+    color: #ddd;
+    line-height: 1.8;
+}
+
+/*=================================================
+HOME
+=================================================*/
+
+.home-box {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 60px;
+}
+
+.home-box h2 {
+    font-size: 2.8rem;
+    color: #d41e1e;
+    margin-bottom: 20px;
+}
+
+.home-box p {
+    color: #ddd;
+    line-height: 2;
+    font-size: 1.05rem;
+}
+
+/*=================================================
+DESTAQUES
+=================================================*/
+
+.destaques-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin: 70px 0;
+}
+
+.destaque-card {
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 35px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+    transition: .35s;
+}
+
+.destaque-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, .35);
+}
+
+.destaque-card i {
+    font-size: 3rem;
+    color: #d41e1e;
+    margin-bottom: 20px;
+}
+
+.destaque-card h3 {
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.destaque-card p {
+    color: #ddd;
+    line-height: 1.7;
+}
+
+/*=================================================
+NÚMEROS
+=================================================*/
+
+.numeros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin: 70px 0;
+}
+
+.numero-card {
+    background: #d41e1e;
+    color: #fff;
+    text-align: center;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.numero-card h2 {
+    font-size: 3rem;
+    margin-bottom: 12px;
+}
+
+.numero-card span {
+    font-size: 1.05rem;
+}
+
+/*=================================================
+MARCAS
+=================================================*/
+
+.marcas {
+    margin: 80px 0;
+}
+
+.marcas h2 {
+    text-align: center;
+    margin-bottom: 45px;
+    color: #d41e1e;
+}
+
+.marcas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
 }
 
-/* 📦 CARD PRODUTO */
-.produto {
-    background: rgba(255,255,255,0.08);
+.marca {
+    background: rgba(255, 255, 255, .08);
     backdrop-filter: blur(10px);
-    padding: 15px;
     border-radius: 15px;
+    padding: 35px;
     text-align: center;
-    transition: 0.3s;
+    color: #fff;
+    font-weight: 600;
+    transition: .3s;
 }
 
-.produto:hover {
+.marca:hover {
+    background: #d41e1e;
     transform: scale(1.05);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
 
-/* 🖼️ IMAGEM */
-.produto img {
+/*=================================================
+CHAMADA
+=================================================*/
+
+.home-call {
+    margin-top: 80px;
+    text-align: center;
+    background: #d41e1e;
+    color: #fff;
+    padding: 70px 30px;
+    border-radius: 25px;
+}
+
+.home-call h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.home-call p {
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.9;
+    margin-bottom: 35px;
+}
+
+.btn-principal {
+    display: inline-block;
+    background: #111;
+    color: #fff;
+    padding: 18px 40px;
+    border-radius: 40px;
+    font-weight: 700;
+    transition: .3s;
+}
+
+.btn-principal:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, .25);
+}
+
+/*=================================================
+PRODUTOS
+=================================================*/
+
+.grid-produto {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 50px;
+    padding: 20px;
+}
+
+/*=================================================
+CARD PRODUTO
+=================================================*/
+
+.produto-card {
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(10px);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: .35s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.produto-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .45);
+}
+
+.produto-card img {
     width: 100%;
     height: 160px;
-    max-height: 160px;
     object-fit: contain;
-    border-radius: 10px;
-    background: rgb(255, 255, 255);
-    padding: 5px;
-    font-size: 18px;
+    background: #fff;
+    padding: 8px;
 }
 
-/* 🏷️ TEXTOS */
-.marca {
-    font-size: 18px;
-    color: #ffffff;
+.produto-info {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.nome {
-    font-weight: bold;
-    color: #ffffff;
-    margin: 5px 0;
+.produto-info {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
 }
 
-/* 🔘 BOTÕES */
-.produto button {
-    margin-top: 5px;
+.produto-info h3 {
+    color: #fff;
+    font-size: 1.3rem;
+}
+
+.produto-info h3 {
+    font-size: 1.1rem;
+    line-height: 1.3;
+    min-height: 42px;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
+    line-clamp: 2; /* <- ADICIONE ISSO */
+
+    overflow: hidden;
+}
+
+.produto-info p {
+    color: #ddd;
+    line-height: 1.6;
+}
+
+.produto-info p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 2px 0;
+}
+
+.produto-preco {
+    font-size: 1.7rem;
+    color: #fff;
+    font-weight: 700;
+}
+
+.estoque {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: #dff5df;
+    color: #111;
+    font-size: .85rem;
+    font-weight: 600;
+}
+
+.btn-orcamento {
+    margin-top: 18px;
     width: 100%;
+    padding: 14px;
     border: none;
-    padding: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
+    border-radius: 12px;
+    background: #d41e1e;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: .3s;
 }
 
-.produto button:first-of-type {
-    background: orange;
-    color: white;
+.btn-orcamento {
+    margin-top: auto;
 }
 
-.produto button:last-of-type {
-    background: red;
-    color: white;
+.btn-orcamento:hover {
+    background: #b71c1c;
 }
 
-/* 🧾 FORM */
-form input {
+/*=================================================
+FILTROS
+=================================================*/
+
+.filtros {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.filtros input,
+.filtros select {
+    flex: 1;
+    min-width: 220px;
+    padding: 15px 18px;
+    border-radius: 12px;
+    border: 1px solid #444;
+    background: #1d1d1d;
+    color: #fff;
+    font-size: 1rem;
+    transition: .25s;
+}
+
+.filtros input::placeholder {
+    color: #bfbfbf;
+}
+
+.filtros input:focus,
+.filtros select:focus {
+    outline: none;
+    border-color: #d41e1e;
+    box-shadow: 0 0 0 4px rgba(212, 30, 30, .18);
+}
+
+/*=================================================
+PAINEL ADMIN
+=================================================*/
+
+.painel-admin {
+    margin-top: 80px;
+    padding: 40px;
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+}
+
+.form-produto {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+}
+
+.grupo-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.grupo-input label {
+    margin-bottom: 8px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.grupo-input input,
+.grupo-input select,
+.grupo-input textarea {
+    padding: 14px 16px;
+    border: 1px solid #444;
+    border-radius: 12px;
+    background: #1d1d1d;
+    color: #fff;
+    font-size: 1rem;
+    transition: .25s;
+    font-family: inherit;
+}
+
+.grupo-input input:focus,
+.grupo-input select:focus,
+.grupo-input textarea:focus {
+    outline: none;
+    border-color: #d41e1e;
+    box-shadow: 0 0 0 4px rgba(212, 30, 30, .18);
+}
+
+.grupo-textarea {
+    grid-column: 1/-1;
+}
+
+.grupo-textarea textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.acoes-admin {
+    grid-column: 1/-1;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.btn-cinza {
+    background: #555;
+    color: #fff;
+    padding: 14px 30px;
+    border-radius: 12px;
+    transition: .3s;
+}
+
+.btn-cinza:hover {
+    background: #333;
+}
+
+/*=================================================
+IMPLEMENTOS
+=================================================*/
+
+.implementos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 35px;
+    margin-top: 50px;
+}
+
+.implemento-card {
+    overflow: hidden;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .30);
+    transition: .4s;
+}
+
+.implemento-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, .45);
+}
+
+.implemento-card img {
     width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 8px;
-    border: none;
+    height: 240px;
+    object-fit: cover;
+    transition: .5s;
 }
 
-form button {
+.implemento-card:hover img {
+    transform: scale(1.08);
+}
+
+.implemento-info {
+    padding: 25px;
+}
+
+.implemento-info h3 {
+    color: #fff;
+    margin-bottom: 12px;
+    font-size: 1.35rem;
+}
+
+.implemento-info p {
+    color: #ddd;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.implemento-info button {
     width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    background: #0b6b3a;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-.btn-whatsapp {
-  display: block;
-  margin-top: 10px;
-  padding: 10px;
-  background: #25D366;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
 }
 
-.btn-whatsapp:hover {
-  background: #1ebe5d;
+/*=================================================
+PÓS-VENDA
+=================================================*/
+
+.servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
 }
+
+.servico-card {
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(10px);
+    border-radius: 18px;
+    padding: 35px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
+    transition: .35s;
+}
+
+.servico-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, .35);
+}
+
+.servico-card i {
+    font-size: 3rem;
+    color: #d41e1e;
+    margin-bottom: 20px;
+}
+
+.servico-card h3 {
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.servico-card p {
+    color: #ddd;
+    line-height: 1.8;
+}
+
+.cta-posvenda {
+    margin-top: 70px;
+    background: #d41e1e;
+    color: #fff;
+    text-align: center;
+    padding: 70px 40px;
+    border-radius: 25px;
+}
+
+.cta-posvenda h2 {
+    font-size: 2.4rem;
+    margin-bottom: 18px;
+}
+
+.cta-posvenda p {
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.9;
+    margin-bottom: 30px;
+}
+
+/*=================================================
+CONTATOS
+=================================================*/
+
+.contato-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.contato-card {
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 35px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, .08);
+    transition: .35s;
+}
+
+.contato-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, .35);
+}
+
+.contato-card i {
+    font-size: 3rem;
+    color: #d41e1e;
+    margin-bottom: 20px;
+}
+
+.contato-card h3 {
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.contato-card p {
+    color: #d7d7d7;
+    line-height: 1.8;
+}
+
+.contato-card a {
+    color: #ff4d4d;
+    font-weight: 600;
+}
+
+.contato-card a:hover {
+    color: #fff;
+}
+
+/*=================================================
+FOOTER
+=================================================*/
+
+.footer {
+    margin-top: 100px;
+    background: #111;
+    border-top: 4px solid #d41e1e;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 40px;
+    padding: 70px 0;
+}
+
+.footer-logo {
+    width: 180px;
+    margin-bottom: 20px;
+}
+
+.footer-col h3 {
+    color: #fff;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.footer-col h3::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    margin-top: 8px;
+    background: #d41e1e;
+}
+
+.footer-col p {
+    color: #bdbdbd;
+    line-height: 1.9;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col li {
+    margin-bottom: 12px;
+}
+
+.footer-col a {
+    color: #bdbdbd;
+    transition: .3s;
+}
+
+.footer-col a:hover {
+    color: #fff;
+    padding-left: 8px;
+}
+
+.footer-col button {
+    background: none;
+    color: #bdbdbd;
+    border: none;
+    transition: .3s;
+    font-size: 1rem;
+}
+
+.footer-col button:hover {
+    color: #fff;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-icons a {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #d41e1e;
+    color: #fff;
+    transition: .35s;
+}
+
+.social-icons a:hover {
+    background: #fff;
+    color: #d41e1e;
+    transform: translateY(-6px) rotate(360deg);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, .08);
+    padding: 25px;
+    text-align: center;
+    color: #9f9f9f;
+    font-size: .95rem;
+}
+
+/*=================================================
+WHATSAPP
+=================================================*/
+
+.whatsapp-float {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: #25D366;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .4);
+    z-index: 99999;
+    transition: .35s;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.12);
+    box-shadow: 0 15px 40px rgba(37, 211, 102, .55);
+}
+
+/*=================================================
+ANIMAÇÕES
+=================================================*/
+
+@keyframes subir {
+
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+@keyframes pulse {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+.destaque-card,
+.produto-card,
+.implemento-card,
+.servico-card,
+.contato-card,
+.numero-card {
+    animation: subir .8s ease;
+}
+
+.home-call,
+.cta-posvenda {
+    animation: aparecer 1.2s ease;
+}
+
+.btn-principal {
+    animation: pulse 3s infinite;
+}
+
+/*=================================================
+RESPONSIVIDADE
+=================================================*/
+
+@media (max-width:1200px) {
+
+    .hero h1 {
+        font-size: 3.4rem;
+    }
+
+    .hero p {
+        font-size: 1.15rem;
+    }
+
+    .grid-produto {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .implementos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+}
+
+@media (max-width:992px) {
+
+    .hero {
+        min-height: 75vh;
+        padding: 60px 25px;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .hero p {
+        font-size: 1.05rem;
+    }
+
+    .logo-principal {
+        width: 160px;
+    }
+
+    .grid-produto {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .menu {
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .menu button {
+        padding: 10px 18px;
+    }
+
+    .titulo-secao h2 {
+        font-size: 2.3rem;
+    }
+
+    .home-box h2 {
+        font-size: 2.3rem;
+    }
+
+    .numero-card h2 {
+        font-size: 2.5rem;
+    }
+
+}
+
+@media (max-width:768px) {
+
+    .topbar {
+        display: none;
+    }
+
+    .hero {
+        min-height: 65vh;
+        padding: 50px 20px;
+    }
+
+    .hero h1 {
+        font-size: 2.4rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-buttons a,
+    .hero-buttons button {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .menu {
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 12px;
+        scrollbar-width: none;
+    }
+
+    .menu::-webkit-scrollbar {
+        display: none;
+    }
+
+    .menu button {
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .titulo-secao {
+        margin-bottom: 35px;
+    }
+
+    .titulo-secao h2 {
+        font-size: 2rem;
+    }
+
+    .titulo-secao p {
+        font-size: .95rem;
+    }
+
+    .home-call,
+    .cta-posvenda {
+        padding: 50px 25px;
+    }
+
+    .home-call h2,
+    .cta-posvenda h2 {
+        font-size: 2rem;
+    }
+
+    .footer-grid {
+        text-align: center;
+    }
+
+    .footer-col h3::after {
+        margin: auto;
+        margin-top: 10px;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+}
+
+@media (max-width:576px) {
+
+    .logo-principal {
+        width: 130px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: .95rem;
+    }
+
+    .container {
+        width: 94%;
+    }
+
+    .grid-produto {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .implementos-grid,
+    .servicos-grid,
+    .contato-grid,
+    .destaques-grid,
+    .numeros,
+    .marcas-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .produto-card img {
+        height: 190px;
+    }
+
+    .implemento-card img {
+        height: 200px;
+    }
+
+    .numero-card {
+        padding: 30px;
+    }
+
+    .numero-card h2 {
+        font-size: 2.2rem;
+    }
+
+    .painel-admin {
+        padding: 25px;
+    }
+
+    .acoes-admin {
+        justify-content: center;
+    }
+
+    .acoes-admin button {
+        width: 100%;
+    }
+
+    .btn-principal,
+    .btn-orcamento,
+    .btn-verde,
+    .btn-transparente {
+
+        width: 100%;
+
+    }
+
+    .whatsapp-float {
+
+        width: 58px;
+        height: 58px;
+        right: 18px;
+        bottom: 18px;
+        font-size: 1.6rem;
+
+    }
+
+}
+
+@media (max-width:380px) {
+
+    .hero h1 {
+
+        font-size: 1.7rem;
+
+    }
+
+    .hero p {
+
+        font-size: .90rem;
+
+    }
+
+    .menu button {
+
+        font-size: .85rem;
+        padding: 8px 14px;
+
+    }
+
+    .titulo-secao h2 {
+
+        font-size: 1.7rem;
+
+    }
+
+}
+
+
+/*=================================================
+EFEITOS EXTRAS
+=================================================*/
+
+img {
+
+    max-width: 100%;
+    display: block;
+
+}
+
+section {
+
+    padding: 80px 0;
+
+}
+
+::selection {
+
+    background: #d41e1e;
+    color: #fff;
+
+}
+
+input,
+textarea,
+select,
+button {
+
+    transition: .30s;
+
+}
+
+button:active {
+
+    transform: scale(.98);
+
+}
+
+.card-hover {
+
+    transition: .35s;
+
+}
+
+.card-hover:hover {
+
+    transform: translateY(-8px);
+
+}
+
+/*=================================================
+GLASSMORPHISM
+=================================================*/
+
+.glass {
+
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 20px;
+
+}
+
+/*=================================================
+SOMBRA PADRÃO
+=================================================*/
+
+.shadow {
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, .35);
+
+}
+
+/*=================================================
+TRANSIÇÕES GLOBAIS
+=================================================*/
+
+a,
+button,
+input,
+textarea,
+select,
+.card,
+.produto-card,
+.servico-card,
+.implemento-card,
+.contato-card {
+
+    transition: .35s ease;
+
+}
+
+/*=================================================
+FIM DO STYLE.CSS
+=================================================*/
