@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daniel Tratores Agrícola - Pós-Venda</title>
+
+  <meta name="description" content="Peças agrícolas, implementos, rolamentos, filtros e atendimento especializado." />
+  <meta name="theme-color" content="#1f4d1c" />
+
+  <link rel="icon" href="/new/logoat.svg" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="/new/style/style.css" />
+  <link rel="stylesheet" href="/new/style/posvendas.css" />
+</head>
+
+<body>
+
+  <!-- LOGIN ADMINISTRATIVO -->
+  <div id="loginModal" class="login-modal" style="display:none;">
+    <button class="btn-cinza" onclick="sair()">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      Sair do Painel
+    </button>
+
+    <div class="login-box">
+      <h2>Área Administrativa</h2>
+      <p>Faça login para acessar o painel.</p>
+      <input type="email" id="emailLogin" placeholder="E-mail" />
+      <input type="password" id="senhaLogin" placeholder="Senha" />
+      <button onclick="fazerLogin()">Entrar</button>
+      <p id="erroLogin"></p>
+    </div>
+  </div>
+
+  <!-- TOPO -->
+  <header class="topbar">
+    <div class="topbar-container">
+      <div>
+        <i class="fa-solid fa-phone"></i>
+        (69) 99603-1753
+      </div>
+      <div>
+        <i class="fa-solid fa-envelope"></i>
+        contato@danieltratores.com.br
+      </div>
+      <div>
+        <i class="fa-solid fa-clock"></i>
+        Segunda à Sexta • 07:30 às 18:00
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <img src="/new/dt.png" class="banner-img" alt="Daniel Tratores" />
+      <h1>Daniel Tratores Agrícola</h1>
+      <p>Atendimento e suporte para manter seu equipamento funcionando.</p>
+
+      <div class="hero-buttons">
+        <button class="btn-verde" onclick="window.location.href='/new/index.html#produtos'">Catálogo de Produtos</button>
+        <button class="btn-transparente" onclick="window.location.href='/new/index.html#implementos'">Catálogo de Implementos</button>
+      </div>
+
+      <style>
+        .banner-img {
+          margin: 0;
+          border-radius: 15px;
+        }
+      </style>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <nav class="menu">
+    <button onclick="window.location.href='/new/index.html#home'">Home</button>
+    <button onclick="window.location.href='/new/pages/produtos.html'">Produtos</button>
+    <button onclick="window.location.href='/new/pages/implementos.html'">Implementos</button>
+    <button onclick="window.location.href='/new/pages/posvendas.html'">Pós-Venda</button>
+    <button onclick="window.location.href='/new/pages/contatos.html'">Contatos</button>
+  </nav>
+
+  <main>
+    <section id="posvendas" class="aba ativa">
+      <div class="container">
+        <div class="titulo-secao">
+          <h2>Pós-Venda</h2>
+          <p>Nosso compromisso continua após a venda.</p>
+        </div>
+
+        <div class="servicos-grid">
+          <article class="servico-card">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+            <h3>Assistência Técnica</h3>
+            <p>Suporte técnico especializado para garantir o melhor desempenho do seu equipamento.</p>
+          </article>
+
+          <article class="servico-card">
+            <i class="fa-solid fa-gears"></i>
+            <h3>Peças Originais</h3>
+            <p>Trabalhamos com peças de alta qualidade para maior durabilidade e segurança.</p>
+          </article>
+
+          <article class="servico-card">
+            <i class="fa-solid fa-shield-halved"></i>
+            <h3>Garantia</h3>
+            <p>Produtos com garantia e procedência para oferecer tranquilidade ao cliente.</p>
+          </article>
+
+          <article class="servico-card">
+            <i class="fa-solid fa-headset"></i>
+            <h3>Atendimento Especializado</h3>
+            <p>Equipe preparada para orientar na escolha da peça ideal.</p>
+          </article>
+
+          <article class="servico-card">
+            <i class="fa-solid fa-truck-fast"></i>
+            <h3>Entrega Rápida</h3>
+            <p>Enviamos produtos para todo o Brasil com segurança e agilidade.</p>
+          </article>
+
+          <article class="servico-card">
+            <i class="fa-solid fa-comments"></i>
+            <h3>Consultoria</h3>
+            <p>Auxílio na identificação de peças através da referência, modelo ou foto.</p>
+          </article>
+        </div>
+
+        <div class="cta-posvenda">
+          <h2>Precisa de ajuda?</h2>
+          <p>Nossa equipe está pronta para encontrar a peça correta para sua máquina agrícola.</p>
+          <a href="https://wa.me/5569996031753" target="_blank" class="btn-principal">
+            <i class="fa-brands fa-whatsapp"></i>
+            Falar no WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a href="https://wa.me/5569996031753" target="_blank" class="whatsapp-float" aria-label="Falar no WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <img src="/new/logoat.svg" alt="Daniel Tratores" class="footer-logo">
+        <p>
+          A Daniel Tratores Agrícola trabalha com peças, implementos agrícolas, filtros, rolamentos, correias,
+          lubrificantes e atendimento especializado para o produtor rural.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Navegação</h3>
+        <ul>
+          <li><button onclick="window.location.href='/new/index.html#home'">Home</button></li>
+          <li><button onclick="window.location.href='/new/pages/produtos.html'">Produtos</button></li>
+          <li><button onclick="window.location.href='/new/pages/implementos.html'">Implementos</button></li>
+          <li><button onclick="window.location.href='/new/pages/posvendas.html'">Pós-Venda</button></li>
+          <li><button onclick="window.location.href='/new/pages/contatos.html'">Contatos</button></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Contato</h3>
+        <p><i class="fa-solid fa-phone"></i> (69) 99603-1753</p>
+        <p><i class="fa-solid fa-envelope"></i> contato@danieltratores.com.br</p>
+        <p><i class="fa-solid fa-location-dot"></i> Rondônia - Brasil</p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Redes Sociais</h3>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/DanielTratoresAgricola" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/danieltratoresagricola?igsh=ZWNpdnFoeWttOG9z" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://wa.me/5569996031753" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Daniel Tratores Agrícola • Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyC23KJZEqvrsvhZBiMmIPPDj3lmi1bcW3E",
+      authDomain: "daniel-tratores.firebaseapp.com",
+      projectId: "daniel-tratores",
+      storageBucket: "daniel-tratores.firebasestorage.app",
+      messagingSenderId: "827204727665",
+      appId: "1:827204727665:web:4e95eb451cbb66fd243cd0"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+  </script>
+
+  <script src="/new/js/script.js"></script>
+</body>
+
+</html>
+
