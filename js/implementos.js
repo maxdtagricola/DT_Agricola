@@ -434,7 +434,7 @@ async function excluirImplemento(id) {
 NOVO IMPLEMENTO
 =========================================================*/
 
-async function adicionarImplemento(dados){
+async function adicionarImplemento(dados) {
 
     dados.dataCadastro =
         firebase.firestore.FieldValue.serverTimestamp();
@@ -452,7 +452,7 @@ async function adicionarImplemento(dados){
 ATUALIZAR
 =========================================================*/
 
-async function atualizarImplemento(id, dados){
+async function atualizarImplemento(id, dados) {
 
     dados.dataAtualizacao =
         firebase.firestore.FieldValue.serverTimestamp();
@@ -476,7 +476,7 @@ function limparFormularioImplemento() {
 
 }
 
-function normalizarImagemImplemento(url){
+function normalizarImagemImplemento(url) {
 
     if (!url) return "sem-imagem.png";
 
@@ -569,7 +569,7 @@ function ordenarImplementos() {
 PESQUISA
 =========================================================*/
 
-function pesquisarImplementos(texto){
+function pesquisarImplementos(texto) {
 
     texto = texto
 
@@ -611,11 +611,11 @@ function pesquisarImplementos(texto){
 
 }
 
-function renderizarLista(lista){
+function renderizarLista(lista) {
 
     Implementos.container.innerHTML = "";
 
-    lista.forEach(item=>{
+    lista.forEach(item => {
 
         Implementos.container.appendChild(
 
@@ -627,7 +627,7 @@ function renderizarLista(lista){
 
 }
 
-function cancelarEdicao(){
+function cancelarEdicao() {
 
     limparFormularioImplemento();
 
