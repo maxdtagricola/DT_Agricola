@@ -625,8 +625,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     iniciarFirestore();
 
-    // Se hash já vier da index.html (ex: #posvendas ou #contatos), não forçamos home.
-    if (!hashAtual) mostrarAba("home");
+// Se hash já vier da index.html (ex: #posvendas ou #contatos), não forçamos home.
+    // Em pages/posvendas.html e pages/contatos.html a hash costuma ser vazia; nesses casos,
+    // manteremos a aba nativa carregada pela própria página.
+    if (!hashAtual) {
+        const idPagina = document.querySelector('.aba.ativa')?.id;
+        if (!idPagina) mostrarAba("home");
+    }
 
     // admin check
     verificarRotaAdmin();
@@ -644,6 +649,9 @@ function verificarRotaAdmin() {
 
     const login = $("loginModal");
     const painel = $("painelAdmin");
+
+    // Se não houver login/painel de produtos nesta página, não tente gerenciar.
+    if (!login && !painel) return;
 
     if (!isAdminRoute) {
 
