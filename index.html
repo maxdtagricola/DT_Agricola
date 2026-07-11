@@ -147,12 +147,12 @@
 
             <div class="hero-buttons">
 
-        <button class="btn-verde" onclick="mostrarAba('produtos')">
-            Catálogo de Produtos
-        </button>
-        <button class="btn-transparente" onclick="mostrarAba('implementos')">
-            Catálogo de Implementos
-        </button>
+                <button class="btn-verde" onclick="mostrarAba('produtos')">
+                    Catálogo de Produtos
+                </button>
+                <button class="btn-transparente" onclick="mostrarAba('implementos')">
+                    Catálogo de Implementos
+                </button>
 
             </div>
 
@@ -177,8 +177,10 @@
             Implementos
         </button>
 
-            <button onclick="mostrarAba('posvendas'); if (window.history && window.history.replaceState) window.history.replaceState(null, '', 'index.html#posvendas');">Pós-Venda</button>
-            <button onclick="mostrarAba('contatos'); if (window.history && window.history.replaceState) window.history.replaceState(null, '', 'index.html#contatos');">Contatos</button>
+        <button
+            onclick="mostrarAba('posvendas'); if (window.history && window.history.replaceState) window.history.replaceState(null, '', 'index.html#posvendas');">Pós-Venda</button>
+        <button
+            onclick="mostrarAba('contatos'); if (window.history && window.history.replaceState) window.history.replaceState(null, '', 'index.html#contatos');">Contatos</button>
 
 
     </nav>
@@ -1274,23 +1276,23 @@
     <!-- JAVASCRIPT -->
     <!-- ========================================= -->
 
-  <script src="js/script.js"></script>
-  <script src="js/implementos.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/implementos.js"></script>
 
-  <script>
-    // Sincroniza a aba com a hash atual ao carregar a página.
-    // (Usa setTimeout porque o mostrarAba e/ou o script podem ainda estar carregando.)
-    window.addEventListener('DOMContentLoaded', () => {
-      setTimeout(() => {
-        try {
-          const h = (window.location.hash || '').replace('#', '');
-          if (h && typeof mostrarAba === 'function') mostrarAba(h);
-        } catch (e) {
-          // ignora
-        }
-      }, 50);
-    });
-  </script>
+    <script>
+        // Sincroniza a aba com a hash atual ao carregar a página.
+        // (Usa setTimeout porque o mostrarAba e/ou o script podem ainda estar carregando.)
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                try {
+                    const h = (window.location.hash || '').replace('#', '');
+                    if (h && typeof mostrarAba === 'function') mostrarAba(h);
+                } catch (e) {
+                    // ignora
+                }
+            }, 50);
+        });
+    </script>
 </body>
 
 </html>
