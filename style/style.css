@@ -1219,9 +1219,7 @@ RESPONSIVIDADE
     .destaques-grid,
     .numeros,
     .marcas-grid {
-
         grid-template-columns: 1fr;
-
     }
 
     .produto-card img {
@@ -1256,9 +1254,12 @@ RESPONSIVIDADE
     .btn-orcamento,
     .btn-verde,
     .btn-transparente {
-
         width: 100%;
+    }
 
+    /* Mobile: evita cortar conteúdo no final da página por causa do botão fixo */
+    .footer {
+        margin-bottom: 95px;
     }
 
     .whatsapp-float {
@@ -1269,6 +1270,29 @@ RESPONSIVIDADE
         bottom: 18px;
         font-size: 1.6rem;
 
+    }
+
+    /* Menu no mobile: mais “touch friendly” */
+    .menu {
+        padding: 10px 8px;
+    }
+
+    .menu button {
+        padding: 10px 16px;
+        font-size: .95rem;
+    }
+
+    /* Ajustes de cards para telas pequenas */
+    .destaque-card,
+    .produto-card,
+    .implemento-card,
+    .servico-card,
+    .contato-card {
+        border-radius: 16px;
+    }
+
+    .contato-card {
+        padding: 28px 18px;
     }
 
 }
@@ -1326,6 +1350,7 @@ section {
     color: #fff;
 
 }
+
 
 input,
 textarea,
