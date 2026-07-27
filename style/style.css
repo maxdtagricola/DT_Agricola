@@ -10,6 +10,8 @@
 
 html {
     scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #312f2f #e8e8e8;
 }
 
 body {
@@ -17,7 +19,6 @@ body {
     margin: 0;
 background: url("../img.jpg") center center/cover fixed no-repeat;
     color: #fff;
-    border-radius: 15px;
 }
 
 body::before {
@@ -34,7 +35,7 @@ SCROLLBAR
 ===========================*/
 
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -48,6 +49,18 @@ SCROLLBAR
 
 ::-webkit-scrollbar-thumb:hover {
     background: #d41e1e;
+}
+
+@media (max-width: 768px) {
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    html {
+        scrollbar-width: thin;
+    }
+
 }
 
 /*==========================
