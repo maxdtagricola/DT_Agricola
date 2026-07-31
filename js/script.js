@@ -8,7 +8,7 @@
 const CONFIG = {
     moeda: "pt-BR",
     moedaFormato: "BRL",
-    itensPorPagina: 50
+    itensPorPagina: 20
 };
 
 App.produtos = App.produtos || [];
@@ -91,7 +91,7 @@ function criarCardProduto(produto) {
 
 /*=========================================================
 RENDERIZAÇÃO + PAGINAÇÃO
-    Máximo de CONFIG.itensPorPagina (50) itens exibidos por vez.
+    Máximo de CONFIG.itensPorPagina (20) itens exibidos por vez.
     Ao ultrapassar esse limite, o restante fica em outra página,
     navegável pelos botões Anterior/Próxima.
 =========================================================*/
