@@ -525,7 +525,7 @@ Referência: ${produto.referencia || "-"}
 Gostaria de receber um orçamento.`;
 
     window.open(
-        `https://wa.me/${Utils.WHATSAPP}?text=${encodeURIComponent(mensagem)}`,
+        `https://wa.me/${Utils.WHATSAPP1}?text=${encodeURIComponent(mensagem)}`,
         "_blank",
         "noopener"
     );
