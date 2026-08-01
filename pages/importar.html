@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daniel Tratores Agrícola - Importação de Produtos</title>
+
+  <meta name="description" content="Ferramenta interna de importação em massa de produtos." />
+  <meta name="theme-color" content="#1f4d1c" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="icon" href="../logoat.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://cdn.sheetjs.com">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="../style/style.css" />
+</head>
+
+<body>
+
+  <!-- TOPO -->
+  <header class="topbar">
+    <div class="topbar-container">
+      <div><i class="fa-solid fa-phone"></i> (69) 99603-1753</div>
+      <div><i class="fa-solid fa-envelope"></i> compras@dtagricola.com.br</div>
+      <div><i class="fa-solid fa-clock"></i> Segunda à Sexta • 07:30 às 18:00</div>
+    </div>
+  </header>
+
+  <!-- MENU (esta página fica fora do menu de propósito — é uma ferramenta interna) -->
+  <nav class="menu">
+    <a href="../index.html" data-aba="home">Home</a>
+    <a href="./produtos.html" data-aba="produtos">Produtos</a>
+    <a href="./implementos.html" data-aba="implementos">Implementos</a>
+    <a href="./posvendas.html" data-aba="posvendas">Pós-Venda</a>
+    <a href="./contatos.html" data-aba="contatos">Contatos</a>
+    <a href="./login.html" id="navAuth" data-login-href="./login.html" data-aba="login">Login</a>
+  </nav>
+
+  <main>
+    <section id="importar" class="aba ativa">
+      <div class="container">
+
+        <div class="titulo-secao">
+          <h2>Importação de Produtos</h2>
+          <p>Ferramenta interna e temporária para cadastrar vários produtos de uma vez, usando os mesmos campos do cadastro individual.</p>
+        </div>
+
+        <!-- Aviso para quem não estiver logado -->
+        <div id="importarSemLogin" data-requer-deslogado class="painel-admin" style="text-align:center;">
+          <p>Você precisa estar logado para usar esta ferramenta.</p>
+          <p style="margin-top:15px;">
+            <a href="./login.html" class="btn-verde">Ir para o Login</a>
+          </p>
+        </div>
+
+        <!-- Ferramenta (só aparece logado) -->
+        <section data-requer-login class="painel-admin" style="display:none;">
+
+          <div class="formato-importacao">
+            <p><strong>Como funciona:</strong> a planilha deve ter, na primeira linha, os nomes das colunas — <code>nome, marca, referencia, categoria, medidas, valor, quantidade, imagem, descricao</code> — a ordem das colunas não importa.</p>
+            <p>Se o produto (pela <strong>referência</strong>) já existir no catálogo, só a <strong>disponibilidade</strong> é atualizada, calculada a partir da <strong>quantidade</strong>: maior que zero vira "Em estoque"; zero ou negativo vira "Indisponível". Os demais dados do produto existente não são alterados.</p>
+            <p>Se a referência ainda não existir, um produto novo é cadastrado com os dados da planilha.</p>
+          </div>
+
+          <div class="acoes-admin">
+            <button type="button" class="btn-cinza" id="btnBaixarModelo">
+              <i class="fa-solid fa-file-excel"></i>
+              Baixar modelo (.xlsx)
+            </button>
+          </div>
+
+          <div class="grupo-input">
+            <label for="arquivoImportacao">Selecione a planilha (.xlsx)</label>
+            <input type="file" id="arquivoImportacao" accept=".xlsx,.xls" />
+          </div>
+
+          <div class="acoes-admin">
+            <button type="button" class="btn-verde" id="btnPreVisualizarImportacao">
+              <i class="fa-solid fa-eye"></i>
+              Pré-visualizar
+            </button>
+          </div>
+
+          <p id="resumoImportacao" class="resumo-importacao"></p>
+
+          <div id="tabelaPreviewImportacao"></div>
+
+          <div class="acoes-admin">
+            <button type="button" class="btn-verde" id="btnImportarProdutos" disabled>
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+              Importar / Sincronizar
+            </button>
+          </div>
+
+        </section>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+
+    <div class="container footer-grid">
+
+      <div class="footer-col">
+        <img src="../logoat.svg" alt="Daniel Tratores" class="footer-logo">
+        <p>
+          A Daniel Tratores Agrícola trabalha com peças,
+          implementos agrícolas, filtros, rolamentos,
+          correias, lubrificantes e atendimento
+          especializado para o produtor rural.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Navegação</h3>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="./produtos.html">Produtos</a></li>
+          <li><a href="./implementos.html">Implementos</a></li>
+          <li><a href="./posvendas.html">Pós-Venda</a></li>
+          <li><a href="./contatos.html">Contatos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Contato</h3>
+        <p><i class="fa-solid fa-phone"></i> (69) 99603-1753</p>
+        <p><i class="fa-solid fa-envelope"></i> compras@dtagricola.com.br</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Daniel Tratores Agrícola • Todos os direitos reservados.</p>
+    </div>
+
+  </footer>
+
+  <!-- FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js" defer></script>
+  <script src="../js/firebase-init.js" defer></script>
+
+  <!-- JAVASCRIPT -->
+  <script src="../js/utils.js" defer></script>
+  <script src="../js/nav.js" defer></script>
+  <script src="../js/auth.js" defer></script>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js" defer></script>
+  <script src="../js/importar.js" defer></script>
+
+</body>
+
+</html>

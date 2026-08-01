@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daniel Tratores Agrícola - Produtos</title>
+
+  <meta name="description" content="Peças agrícolas, implementos, rolamentos, filtros e atendimento especializado." />
+  <meta name="theme-color" content="#1f4d1c" />
+
+  <link rel="icon" href="../logoat.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="../style/style.css" />
+</head>
+
+<body>
+
+  <!-- TOPO -->
+  <header class="topbar">
+    <div class="topbar-container">
+      <div><i class="fa-solid fa-phone"></i> (69) 99603-1753</div>
+      <div><i class="fa-solid fa-envelope"></i> compras@dtagricola.com.br</div>
+      <div><i class="fa-solid fa-clock"></i> Segunda à Sexta • 07:30 às 18:00</div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <img src="../dt.png" class="banner-img" alt="Daniel Tratores" />
+      <h1>Daniel Tratores Agrícola</h1>
+      <p>Catálogo de produtos e peças agrícolas com atendimento especializado.</p>
+
+      <div class="hero-buttons">
+        <a class="btn-verde" href="./produtos.html">Catálogo de Produtos</a>
+        <a class="btn-transparente" href="./implementos.html">Catálogo de Implementos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <nav class="menu">
+    <a href="../index.html" data-aba="home">Home</a>
+    <a href="./produtos.html" data-aba="produtos">Produtos</a>
+    <a href="./implementos.html" data-aba="implementos">Implementos</a>
+    <a href="./posvendas.html" data-aba="posvendas">Pós-Venda</a>
+    <a href="./contatos.html" data-aba="contatos">Contatos</a>
+    <a href="./login.html" id="navAuth" data-login-href="./login.html" data-aba="login">Login</a>
+  </nav>
+
+  <main>
+
+    <section id="produtos" class="aba ativa">
+
+      <div class="container">
+
+        <div class="titulo-secao">
+          <h2>Catálogo de Produtos</h2>
+          <p>Pesquise pelo nome do produto, ou diretamente pela referência.</p>
+        </div>
+
+        <!-- FILTROS -->
+        <div class="filtros">
+          <input type="text" id="busca" placeholder="Buscar por nome..." />
+          <input type="text" id="buscaReferencia" placeholder="Buscar por referência..." />
+          <select id="filtroMarca">
+            <option value="">Todas as marcas</option>
+            <option>John Deere</option>
+            <option>Massey Ferguson</option>
+            <option>Valtra</option>
+            <option>New Holland</option>
+            <option>KUHN</option>
+          </select>
+          <select id="filtroDisponibilidade">
+            <option value="">Disponibilidade</option>
+            <option>Em estoque</option>
+            <option>Sob encomenda</option>
+          </select>
+        </div>
+        <p class="filtros-obs">Buscando por nome ou referência, os filtros de marca/disponibilidade ficam pausados (evita cruzar as duas buscas ao mesmo tempo).</p>
+
+        <!-- LISTA (20 itens por página, carregados sob demanda) -->
+        <div id="listaProdutos" class="grid-produto"></div>
+        <div id="paginacaoProdutos" class="paginacao"></div>
+
+        <!-- PAINEL ADMINISTRATIVO (visível apenas para quem estiver logado) -->
+        <section id="painelAdmin" class="painel-admin" style="display:none;">
+          <div class="titulo-secao">
+            <h2>Painel Administrativo</h2>
+            <p>Cadastro e gerenciamento de produtos.</p>
+            <p><a href="./importar.html" class="link-importacao">Importar produtos em massa (ferramenta temporária)</a></p>
+            <p>
+              <button type="button" class="btn-cinza" id="btnMigrarBusca">Migrar campos de busca (rodar uma vez)</button>
+            </p>
+            <p class="filtros-obs">
+              Rode isso uma vez só, depois de atualizar o site — atualiza os produtos cadastrados antes
+              desta versão para que apareçam nas buscas por nome/referência. Produtos novos ou editados
+              a partir de agora já não precisam disso.
+            </p>
+          </div>
+
+          <form id="formProduto" class="form-produto">
+            <div class="grupo-input">
+              <label for="nome">Nome do Produto</label>
+              <input id="nome" type="text" required>
+            </div>
+
+            <div class="grupo-input">
+              <label for="marca">Marca</label>
+              <input id="marca" type="text">
+            </div>
+
+            <div class="grupo-input">
+              <label for="referencia">Referência</label>
+              <input id="referencia" type="text">
+            </div>
+
+            <div class="grupo-input">
+              <label for="categoria">Categoria</label>
+              <input id="categoria" type="text">
+            </div>
+
+            <div class="grupo-input">
+              <label for="medidas">Medidas</label>
+              <input id="medidas" type="text">
+            </div>
+
+            <div class="grupo-input">
+              <label for="valor">Valor</label>
+              <input id="valor" type="number" step="0.01" min="0">
+            </div>
+
+            <div class="grupo-input">
+              <label for="disponibilidade">Disponibilidade</label>
+              <select id="disponibilidade">
+                <option value="Em estoque">Em estoque</option>
+                <option value="Sob encomenda">Sob encomenda</option>
+                <option value="Indisponível">Indisponível</option>
+              </select>
+            </div>
+
+            <div class="grupo-input">
+              <label for="imagem">URL da imagem</label>
+              <input id="imagem" type="text" placeholder="https://...">
+            </div>
+
+            <div class="grupo-input grupo-textarea">
+              <label for="descricao">Descrição</label>
+              <textarea id="descricao" rows="5"></textarea>
+            </div>
+
+            <div class="acoes-admin">
+              <button type="submit" class="btn-verde">
+                <i class="fa-solid fa-floppy-disk"></i>
+                Salvar Produto
+              </button>
+              <button type="button" class="btn-cinza" onclick="limparFormulario()">
+                <i class="fa-solid fa-eraser"></i>
+                Limpar
+              </button>
+            </div>
+          </form>
+        </section>
+
+      </div>
+    </section>
+
+  </main>
+
+  <a href="https://wa.me/5569996031753" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Falar no WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <footer class="footer">
+
+    <div class="container footer-grid">
+
+      <div class="footer-col">
+        <img src="../logoat.svg" alt="Daniel Tratores" class="footer-logo">
+        <p>
+          A Daniel Tratores Agrícola trabalha com peças,
+          implementos agrícolas, filtros, rolamentos,
+          correias, lubrificantes e atendimento
+          especializado para o produtor rural.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Navegação</h3>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="./produtos.html">Produtos</a></li>
+          <li><a href="./implementos.html">Implementos</a></li>
+          <li><a href="./posvendas.html">Pós-Venda</a></li>
+          <li><a href="./contatos.html">Contatos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Localizações</h3>
+        <p><i class="fa-solid fa-location-dot"></i> <a href="https://maps.app.goo.gl/FJT35RcwZVW9CygC8">Ariquemes - RO</a></p>
+        <p><i class="fa-solid fa-location-dot"></i> <a href="https://maps.app.goo.gl/EREsQjbZgQh228mL8">Cerejeiras - RO</a></p>
+        <p><i class="fa-solid fa-location-dot"></i> <a href="https://maps.app.goo.gl/h5rFFeRvYyKh2fUc6">Rio Branco - AC</a></p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Contato</h3>
+        <p><i class="fa-solid fa-phone"></i> (69) 99603-1753</p>
+        <p><i class="fa-solid fa-envelope"></i> compras@dtagricola.com.br</p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Redes Sociais</h3>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/DanielTratoresAgricola" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/danieltratoresagricola?igsh=ZWNpdnFoeWttOG9z" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://wa.me/5569996031753" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Daniel Tratores Agrícola • Todos os direitos reservados.</p>
+    </div>
+
+  </footer>
+
+  <!-- FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js" defer></script>
+  <script src="../js/firebase-init.js" defer></script>
+
+  <!-- JAVASCRIPT -->
+  <script src="../js/utils.js" defer></script>
+  <script src="../js/nav.js" defer></script>
+  <script src="../js/auth.js" defer></script>
+  <script src="../js/script.js" defer></script>
+
+</body>
+
+</html>
