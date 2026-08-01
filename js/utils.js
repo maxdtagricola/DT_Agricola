@@ -18,7 +18,8 @@
 
     // Número oficial de WhatsApp da empresa (fonte única — evita
     // números divergentes entre módulos, como acontecia antes).
-    const WHATSAPP = "5569996031753";
+    const WHATSAPP1 = "556999478925";
+    const WHATSAPP2 = "556996002946";
 
     // Imagem padrão em SVG (data URI) usada quando um produto/implemento
     // não tem imagem cadastrada ou o arquivo "sem-imagem.png" não existe.
@@ -289,7 +290,8 @@
     }
 
     return {
-        WHATSAPP,
+        WHATSAPP1,
+        WHATSAPP2,
         IMAGEM_PADRAO,
         formatarMoeda,
         limparTexto,
