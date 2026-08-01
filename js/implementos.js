@@ -311,7 +311,7 @@ Categoria: ${item.categoria || "-"}
 Gostaria de receber um orçamento.`;
 
     window.open(
-        `https://wa.me/${Utils.WHATSAPP}?text=${encodeURIComponent(mensagem)}`,
+        `https://wa.me/${Utils.WHATSAPP2}?text=${encodeURIComponent(mensagem)}`,
         "_blank",
         "noopener"
     );
