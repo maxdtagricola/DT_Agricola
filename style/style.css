@@ -503,14 +503,12 @@ CARD PRODUTO
 }
 
 .produto-card img {
-    width: 110%;
+    width: 100%;
     height: 240px;
     display:block;
     object-fit: contain;
     object-position: center;
-    background: #fff;
-    margin: 0;
-    padding: 0;
+    background: #0B0D12;
 }
 
 .produto-info {
