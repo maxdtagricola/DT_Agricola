@@ -506,7 +506,7 @@ CARD PRODUTO
     width: 100%;
     height: 220px;
     display:block;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
     background: #fff
 }
