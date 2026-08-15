@@ -503,8 +503,8 @@ CARD PRODUTO
 }
 
 .produto-card img {
-    width: 85%;
-    height: 300px;
+    width: 110%;
+    height: 240px;
     display:block;
     object-fit: contain;
     object-position: center;
