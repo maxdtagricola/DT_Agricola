@@ -508,7 +508,7 @@ CARD PRODUTO
     object-fit: contain;
     object-position: center;
     display: block;
-    background: #0B0D12;
+    background: blur(10px);
 }
 
 .produto-info {
