@@ -504,10 +504,10 @@ CARD PRODUTO
 
 .produto-card img {
     width: 100%;
-    height: 220px;
-    display:block;
-    object-fit: cover;
+    height: 250px;
+    object-fit: contain;
     object-position: center;
+    display: block;
     background: #fff
 }
 
